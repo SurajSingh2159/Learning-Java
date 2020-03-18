@@ -1,0 +1,2 @@
+module stringlearning6 {
+}
