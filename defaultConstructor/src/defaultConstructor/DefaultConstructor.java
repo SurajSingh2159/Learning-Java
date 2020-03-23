@@ -15,7 +15,7 @@ Books(long Book_code1,String Book_name1,String Author_name1,float Book_price1)//
 	Author_name=Author_name1;
 	Book_price=Book_price1;
 }
-Books()
+Books() // default constructor
 {}
 void show_data()
 {
