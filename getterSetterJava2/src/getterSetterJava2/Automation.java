@@ -47,7 +47,9 @@ public class Automation {
 		pr1.setPcode(10001);
 		long mpcode=pr1.getPcode();
 		System.out.println("Product code="+mpcode);
+		//now lets set the value for price
 		pr1.setPrice(1000100);
+		//now lets get the value of price
 		float mprice=pr1.getPrice();
 		System.out.println("Product price="+mprice);
 		
