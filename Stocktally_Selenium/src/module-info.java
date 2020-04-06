@@ -1,0 +1,2 @@
+module Stocktally_Selenium {
+}
