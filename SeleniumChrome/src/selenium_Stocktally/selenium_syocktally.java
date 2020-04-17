@@ -1,6 +1,8 @@
 package selenium_Stocktally;
 
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,7 +38,6 @@ public class selenium_syocktally {
 		}
 	}
 
-
 	public void openPage() {
 		try {
 			WebElement el = driver.findElement(By.xpath("//*[@id=\"side-menu\"]/li[4]/a/span[2]"));
@@ -53,11 +54,11 @@ public class selenium_syocktally {
 	public void Add_User() {
 		try {
 			driver.findElement(By.xpath("//a[@class='btn btn-white btn-xs addbutton ']")).click();
-			driver.findElement(By.name("firstname")).sendKeys("Amqan"/* + System.currentTimeMillis()*/);
+			driver.findElement(By.name("firstname")).sendKeys("tohit"/* + System.currentTimeMillis() */);
 			Thread.sleep(2000);
 			driver.findElement(By.name("lastname")).sendKeys("Singh");
 			Thread.sleep(2000);
-			driver.findElement(By.name("loginid")).sendKeys("Aman"/* + System.currentTimeMillis()*/);
+			driver.findElement(By.name("loginid")).sendKeys("tia"/* + System.currentTimeMillis() */);
 			Thread.sleep(2000);
 			driver.findElement(By.name("password")).sendKeys("password");
 			Thread.sleep(2000);
@@ -79,7 +80,7 @@ public class selenium_syocktally {
 			dl.sendKeys("A");
 
 			Thread.sleep(2000);
-			// driver.findElement(By.name("joiningdate")).sendKeys("02/05/2020");
+			// driver.findElement(By.name("joiningdate")).sendKeys("02-05-2020");
 			Thread.sleep(2000);
 			driver.findElement(By.name("empcode")).sendKeys("1001");
 			Thread.sleep(2000);
@@ -93,10 +94,12 @@ public class selenium_syocktally {
 
 	public void Edit_User() {
 		try {
-			WebElement dl = driver.findElement(By.id("1002"));
+			WebElement dl = driver.findElement(By.id("1012"));
 			dl.click();
 			Thread.sleep(2000);
-			driver.findElement(By.name("email")).sendKeys("");
+			driver.findElement(By.name("email")).clear();
+			Thread.sleep(2000);
+			driver.findElement(By.name("email")).sendKeys("uvw@gmail.com");
 			Thread.sleep(2000);
 			driver.findElement(By.name("submitbutton")).click();
 		} catch (Exception e) {
@@ -105,19 +108,54 @@ public class selenium_syocktally {
 		}
 	}
 
-	public static void main(String[] args) {
-		selenium_syocktally myObj = new selenium_syocktally();
-		myObj.invokeBrowser();
-		myObj.doLogin();
-		myObj.openPage();
-		myObj.Add_User();
+	public void Delete_User() {
 		try {
+			//Checkbox select 
+			WebElement dl = driver.findElement(By.xpath("//*[@id=\"entitytable\"]/tbody/tr[1]/td[1]/div/ins"));
+			System.out.println(dl);
+			dl.click();
+			Thread.sleep(2000);
+			//CLick on the delete icon
+			WebElement ql = driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div[2]/div/a[3]"));
+			System.out.println(ql);
+			ql.click();
+			Thread.sleep(2000);
+			//driver.findElement(By.name("submitbutton")).click();
+			//Thread.sleep(2000);
+			// driver.switchTo().alert().accept();
+			// Switching to Alert
+			Alert alert = driver.switchTo().alert();
+			// Capturing alert message.
+			String alertMessage = driver.switchTo().alert().getText();
+
+			// Displaying alert message
+			System.out.println(alertMessage);
+			Thread.sleep(1000);
+
+			// Accepting alert
+			alert.accept();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		try {
+			selenium_syocktally myObj = new selenium_syocktally();
+			myObj.invokeBrowser();
+			myObj.doLogin();
+			myObj.openPage();
+			myObj.Add_User();
+			Thread.sleep(1000);
+			myObj.Edit_User();
+			Thread.sleep(1000);
+			myObj.Delete_User();
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		myObj.Edit_User();
 
 	}
 
