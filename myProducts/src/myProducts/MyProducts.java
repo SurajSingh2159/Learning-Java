@@ -2,8 +2,8 @@ package myProducts;
 import java.util.Scanner;
 class Products
 {
-long Products_code;
-float Price;
+private long Products_code;
+private float Price;
 void Read_Data()
 {
 Scanner rd=new Scanner(System.in);
@@ -19,9 +19,9 @@ System.out.println("Price="+Price);
 }// End of Super Class
 class Laptop extends Products
 {
-int RAM;
-int HDD_Space;
-void Read_Data()//Overriding Method
+private int RAM;
+private int HDD_Space;
+void Read_Data()//Overriding Method100
 {
 super.Read_Data();
 Scanner rd= new Scanner(System.in);
