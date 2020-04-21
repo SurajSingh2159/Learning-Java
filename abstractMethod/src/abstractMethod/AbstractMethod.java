@@ -1,10 +1,11 @@
+//Abstract method of a super class which is abstract has to be overridden by all the sub class
 package abstractMethod;
 import java.util.Scanner;
 abstract class Professionals
 {
 private long social_sec_no;
 private int age;
-abstract void performance();
+abstract void performance();// no body in this method-->signature of abstract method
 void Read_Data()
 {
 Scanner rd=new Scanner(System.in);
