@@ -1,0 +1,2 @@
+module nullPointerException2 {
+}
