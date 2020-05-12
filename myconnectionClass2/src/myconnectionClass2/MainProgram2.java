@@ -15,15 +15,15 @@ public class MainProgram2 {
 			System.out.println("Error opening the connection");
 			System.exit(0);
 		}
-//Query="select * from Employee where employee_id=20";
-Query="select Fname and Lname from Employee";
+Query="select * from Employee where employee_id=20";
+Query="select Fname, Lname from Employee";
 try
 {
 Pst=Conn.prepareStatement(Query);
 Rst=Pst.executeQuery();
 while(Rst.next())
 {
-System.out.println(Rst.getString(2)+"\t"+Rst.getString(4));	
+System.out.println(Rst.getString(1)+"\t"+Rst.getString(2 ));	
 }// end of loop
 }// End of try block
 catch(Exception er)
