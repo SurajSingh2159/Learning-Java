@@ -6,8 +6,8 @@ import java.util.*;
 public class MyMainClass3 {
 
 	public static void main(String[] args) {
-		String Query, Fname, Mname;
-		int Employee_id;
+		String Query,name,location;
+		int id, generation;
 		PreparedStatement Pst;
 		
 		Connection Conn=MyConnectionInsert.Connection_Method();
@@ -17,19 +17,22 @@ public class MyMainClass3 {
 			System.exit(0);
 		}
 		Scanner rd=new Scanner(System.in);
-		System.out.println("Enter the First name, Middle Name And employee id");
-		Fname=rd.nextLine();
-		Mname=rd.nextLine();
-		Employee_id=rd.nextInt();
+		System.out.println("Enter the id,name,generation and location");
+		id=rd.nextInt();
+		name=rd.nextLine();
+		generation=rd.nextInt();
+		location=rd.nextLine();
 		
-Query="insert into employee values(?,?,?)";
+Query="insert into FAMILY_GENERATION values(?,?,?,?)";
 try
 {
 Pst=Conn.prepareStatement(Query);
-Pst.setInt(1,Employee_id);
-Pst.setString(2, Fname);
-Pst.setString(3,Mname);
-Pst.executeUpdate();
+Pst.setInt(1,id);
+Pst.setString(2, name);
+Pst.setInt(3,generation);
+Pst.setString(4,location);
+int rtn = Pst.executeUpdate();
+ System.out.println(rtn);
 }// End of try block
 catch(SQLException er)
 {

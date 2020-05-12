@@ -5,7 +5,7 @@ import java.util.*;
 public class MyConnectionDelete {
 
 	public static void main(String[] args) {
-		String Fname;
+		int id;
 		PreparedStatement Pst;
 		String Query=null;
 		Scanner rd=new Scanner(System.in);
@@ -17,14 +17,14 @@ public class MyConnectionDelete {
 			System.exit(0);
 		}
 		
-		System.out.println("Enter the Employee id");
-		Fname=rd.nextLine();
+		System.out.println("Enter the id");
+		id=rd.nextInt();
 		
-Query="delete from employee where Fname=?";
+Query="delete from FAMILY_GENERATION where id=?";
 try
 {
 Pst=Conn.prepareStatement(Query);
-Pst.setString(1,Fname);
+Pst.setInt(1,id);
 Pst.executeUpdate();
 }// End of try block
 catch(SQLException er)
